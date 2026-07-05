@@ -30,8 +30,8 @@ Los pedidos se guardan en `pedidos.csv` (creado automáticamente en el primer us
 app.py                  # Aplicación principal
 requirements.txt        # Dependencias
 .streamlit/
-  config.toml           # Tema y configuración de Streamlit
-  logo_fiuba_*.png      # Logo FIUBA (embebido en header y footer)
+config.toml           # Tema y configuración de Streamlit
+logo_fiuba_*.png      # Logo FIUBA (embebido en header y footer)
 start_streamlit.sh      # Script de arranque (suprime el prompt de email)
 ```
 
