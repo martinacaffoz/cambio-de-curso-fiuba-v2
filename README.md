@@ -31,7 +31,6 @@ app.py                  # Aplicación principal
 requirements.txt        # Dependencias
 .streamlit/
   config.toml           # Tema y configuración de Streamlit
-attached_assets/
   logo_fiuba_*.png      # Logo FIUBA (embebido en header y footer)
 start_streamlit.sh      # Script de arranque (suprime el prompt de email)
 ```
