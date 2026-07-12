@@ -2,6 +2,12 @@
 
 Herramienta web para que estudiantes de la Facultad de Ingeniería (UBA) encuentren compañeros con quienes intercambiar comisiones en una misma materia.
 
+## Enlaces
+
+- 🌐 **Aplicación web:** https://starter-script--facucaffo.replit.app/
+- 🎥 **Video demo:** https://drive.google.com/file/d/1tX7o3FTPmIP75D_19qJvbzupdylODS5t/view?usp=drive_link
+
+
 ## ¿Cómo funciona?
 
 1. **Buscá** si ya hay alguien que quiera el intercambio inverso al tuyo (sin necesidad de registrarte).
