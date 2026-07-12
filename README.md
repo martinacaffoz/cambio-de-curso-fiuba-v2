@@ -6,7 +6,7 @@ Herramienta web para que estudiantes de la Facultad de Ingeniería (UBA) encuent
 
 - 🌐 **Aplicación web:** https://starter-script--facucaffo.replit.app/
 - 🎥 **Video demo:** https://drive.google.com/file/d/1tX7o3FTPmIP75D_19qJvbzupdylODS5t/view?usp=drive_link
-
+- 📄 **Informe completo (PDF):** [docs/Informe - Cambios de Curso (1).pdf](docs/Informe%20-%20Cambios%20de%20Curso%20(1).pdf)
 
 ## ¿Cómo funciona?
 
