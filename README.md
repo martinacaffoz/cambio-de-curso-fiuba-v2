@@ -32,13 +32,19 @@ Los pedidos se guardan en `pedidos.csv` (creado automáticamente en el primer us
 
 ## Estructura
 
+## Estructura
+
 ```
-app.py                  # Aplicación principal
-requirements.txt        # Dependencias
+app.py                       # Aplicación principal
+materias_cursos.json         # Materias y cursos disponibles (editable sin tocar el código)
+requirements.txt             # Dependencias
+LICENSE                      # Licencia MIT
 .streamlit/
-config.toml           # Tema y configuración de Streamlit
-logo_fiuba_*.png      # Logo FIUBA (embebido en header y footer)
-start_streamlit.sh      # Script de arranque (suprime el prompt de email)
+  config.toml                 # Tema y configuración de Streamlit
+attached_assets/
+  logo_fiuba_*.png            # Logo FIUBA (embebido en header y footer)
+docs/
+  Informe - Cambios de Curso (1).pdf   # Informe de diagnóstico y justificación del proyecto
 ```
 
 ## Contacto
