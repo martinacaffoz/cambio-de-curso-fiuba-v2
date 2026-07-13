@@ -15,8 +15,8 @@ from datetime import datetime, timedelta
 def _logo_b64(height_px=None):
     logo_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-        "static",
-        "logo_fiuba.png",
+      "attached_assets",
+        "logo_fiuba_1783172752615.png",
     )
     try:
         with open(logo_path, "rb") as f:
