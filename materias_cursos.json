@@ -1,0 +1,177 @@
+{
+  "materias": [
+    "ÁLGEBRA LINEAL (CB002)",
+    "DESARROLLO ECONÓMICO (TC011)",
+    "ECONOMÍA (TC010)",
+    "ELECTRICIDAD Y MAGNETISMO (CB022)",
+    "ELECTROTECNIA, MÁQUINAS E INSTALACIONES ELÉCTRICAS (TB015)",
+    "EQUIPOS Y SISTEMAS PARA AUTOMATIZACIÓN INDUSTRIAL (TB016)",
+    "ESTADÍSTICA APLICADA (TB014)",
+    "ESTÁTICA Y RESISTENCIA DE MATERIALES (TB011)",
+    "FÍSICA DE LOS SISTEMAS DE PARTÍCULAS (CB020)",
+    "GESTIÓN INTEGRAL DE LA CADENA DE VALOR (TA011)",
+    "HIGIENE Y SEGURIDAD (TC003)",
+    "INDUSTRIAS EXTRACTIVAS (TA016)",
+    "INGENIERÍA AMBIENTAL, SUSTENTABILIDAD Y CUIDADO DEL PLANETA (TC004)",
+    "INVESTIGACIÓN OPERATIVA (TA012)",
+    "LEGISLACIÓN Y EJERCICIO PROFESIONAL (TC002)",
+    "MATERIALES Y APLICACIONES I (TB012)",
+    "ORGANIZACIÓN Y DIRECCIÓN EMPRESARIA (TA010)",
+    "PRINCIPIOS DE INGENIERÍA INDUSTRIAL (TB010)",
+    "QUÍMICA BÁSICA (CB040)",
+    "SISTEMAS CONTABLES Y GESTIÓN DE COSTOS (TA013)"
+  ],
+  "cursos_por_materia": {
+    "FÍSICA DE LOS SISTEMAS DE PARTÍCULAS (CB020)": [
+      "01 - CORSINI (lun y mie)",
+      "02 - SACCONE (lun y mie)",
+      "04 - AGUIRRE (mar y jue)",
+      "05 - CORACH (mar y jue)",
+      "06 - VIÑALES (mie y vie)",
+      "07 - CHIABRANDO (mie y vie)",
+      "09 - CORNEJO (lun y mie)",
+      "10 - TOSCANI (lun y mie)",
+      "11 - SOLA (mar y jue)",
+      "12 - ROSSI (mar y jue)",
+      "15 - CAMUYRANO (lun y mie)",
+      "16 - RACERO (lun y mie)",
+      "17 - FERRINI (mar y jue)",
+      "18 - MORENO (mar y jue)"
+    ],
+    "PRINCIPIOS DE INGENIERÍA INDUSTRIAL (TB010)": [
+      "1 - SABELLI - LOPEZ CONDE (lun y mie)",
+      "2 - PINCHETE (lunes)",
+      "3 - PINCHETE (jueves)"
+    ],
+    "ÁLGEBRA LINEAL (CB002)": [
+      "01A - VARGAS - PALACIOS (lun y mie)",
+      "01B - VARGAS - PERALTA (lu y mie)",
+      "02A - VIBRENTIS - FAGES (mar y jue)",
+      "02B - VIBRENTIS - CASTILLO (mar y jue)",
+      "04A - LOPEZ - ORECCHIA (mar y jue)",
+      "04B - LOPEZ - ALONSO (mar y jue)",
+      "05 - PALACIOS PATRICIA ELIZABETH (mie y vie)",
+      "06A - BOGGI - VENTURIELLO (lu y mie)",
+      "06B - BOGGI - DOMINGUEZ (lu y mie)",
+      "07A - CENTENO - ALVAREZ (mar y jue)",
+      "07B - CENTENO - KLINGER (mar y jue)",
+      "10 - GIRIBET JUAN IGNACIO (mie y vie)",
+      "13A - CABANA - ALONSO (mie y vie)",
+      "13B - CABANA - PRESENZA (mie y vie)",
+      "15A - PALAU - CATUOGNO (lu y mie)",
+      "15B - PALAU - GRÖER (lun y mie)",
+      "17 - MENDIETA JULIO ANTONIO (mar y jue)",
+      "19 - GARCIA SERRANO SILVINA AIDA (lu y mie)",
+      "23A - GRYNBERG - CASSANI (lu y mie)",
+      "23B - GRYNBERG - PEREYRA (lu y mie)",
+      "24 - PERALTA NORA BEATRIZ (lu y mie)",
+      "25 - ORECCHIA MONICA INES (mar y jue)"
+    ],
+    "QUÍMICA BÁSICA (CB040)": [
+      "01 - IRIANNI JORGE LUIS (lunes y viernes)",
+      "01B - DIZ VIRGINIA EMILSE (miércoles y viernes)",
+      "02 - PORTA GUSTAVO ROBERTO (jueves y viernes)",
+      "03 - SARALEGUI ANDREA BEATRIZ (viernes)",
+      "04 - ANDRONIKOV ANDRES (martes y viernes)",
+      "06 - GOBBI MIÑONES ALEJANDRO RICARDO (viernes)",
+      "07 - CARACCIOLO NESTOR (lunes y viernes)",
+      "07B - CARACCIOLO NESTOR (martes y viernes)",
+      "08 - PORTA GUSTAVO ROBERTO (miércoles y viernes)",
+      "09 - ROMERO ADRIANA MARCELA (jueves y viernes)"
+    ],
+    "ESTÁTICA Y RESISTENCIA DE MATERIALES (TB011)": [
+      "1 - CORRAL (martes y jueves)",
+      "2 - CORRAL (miércoles y viernes)",
+      "3 - HARGAIN (miércoles y jueves)",
+      "4 - HARGAIN (martes 8:30 a 11:30 y jueves 9:00 a 12:00)",
+      "5 - HARGAIN (martes 19:00 a 22:00 y jueves 9:00 a 12:00)"
+    ],
+    "ORGANIZACIÓN Y DIRECCIÓN EMPRESARIA (TA010)": [
+      "CONDE COMISIÓN 1",
+      "CONDE COMISIÓN 2",
+      "LIBSTER",
+      "MOREY COMISIÓN 1",
+      "MOREY COMISIÓN 2"
+    ],
+    "ECONOMÍA (TC010)": [
+      "1 - BOTTA",
+      "2 - SURACE",
+      "3 - MONTALBANO"
+    ],
+    "ELECTRICIDAD Y MAGNETISMO (CB022)": [
+      "01 - FONTANA MARCELO RAUL",
+      "02 - APARICIO RODOLFO RUBEN",
+      "03 - ZALDIVAR ESCOLA FACUNDO",
+      "04 - PIVA MARCELO FABIAN",
+      "05 - REDIN EDUARDO GABRIEL",
+      "06 - ROHT YANINA LUCRECIA",
+      "07 - SILVEYRA JOSEFINA MARIA",
+      "08 - BINDA LEONARDO DAVID",
+      "09 - PAMPILLO LAURA GABRIELA",
+      "10 - PAGNOLA MARCELO RUBEN"
+    ],
+    "DESARROLLO ECONÓMICO (TC011)": [
+      "1 - CIVALLERO",
+      "2 - BOTTA",
+      "3 - CHAVES"
+    ],
+    "ESTADÍSTICA APLICADA (TB014)": [
+      "1 (lunes y jueves)",
+      "2 (lunes y miércoles)",
+      "3 (lunes, jueves y viernes)"
+    ],
+    "GESTIÓN INTEGRAL DE LA CADENA DE VALOR (TA011)": [
+      "GUIDA 1 (martes y jueves de 14 a 19 hrs)",
+      "GUIDA 2 (martes y jueves de 16 a 21 hrs)",
+      "KOLL",
+      "LEITER"
+    ],
+    "ELECTROTECNIA, MÁQUINAS E INSTALACIONES ELÉCTRICAS (TB015)": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "INVESTIGACIÓN OPERATIVA (TA012)": [
+      "1 RIGOU",
+      "2 GONZALEZ"
+    ],
+    "SISTEMAS CONTABLES Y GESTIÓN DE COSTOS (TA013)": [
+      "1 ZANCHETTI (lunes)",
+      "2 ZANCHETTI (viernes)",
+      "3 CHAVES"
+    ],
+    "INGENIERÍA AMBIENTAL, SUSTENTABILIDAD Y CUIDADO DEL PLANETA (TC004)": [
+      "01 SOLANA (martes 15 a 19 hrs)",
+      "02 BIANUCCI",
+      "03 SOLANA (martes 17 a 21 hrs)"
+    ],
+    "EQUIPOS Y SISTEMAS PARA AUTOMATIZACIÓN INDUSTRIAL (TB016)": [
+      "1 (lunes y jueves)",
+      "2",
+      "3"
+    ],
+    "HIGIENE Y SEGURIDAD (TC003)": [
+      "CHENLO - RIZZO",
+      "BRIOZZO - BENAVIDES",
+      "MARENSI - LEYBOVICH",
+      "LEYBOVICH - MARENSI",
+      "D´ELIA - BATTAN",
+      "BELTRAMINI - DI MEGLIO"
+    ],
+    "INDUSTRIAS EXTRACTIVAS (TA016)": [
+      "1 (jueves 19 a 23 hrs)",
+      "2 (miércoles 19 a 23 hrs)"
+    ],
+    "LEGISLACIÓN Y EJERCICIO PROFESIONAL (TC002)": [
+      "1 STEPANIK (miércoles 19 a 21 hrs)",
+      "2 CASSIN (martes 19 a 21 hrs)",
+      "3 LOPEZ (miércoles 17 a 19 hrs)",
+      "4 NOREMBERG (jueves 17 a 19 hrs)",
+      "5 RAIDEN I (lunes 16 a 18 hrs)",
+      "6 RAIDEN II (lunes 19 a 21 hrs)"
+    ]
+  }
+}
