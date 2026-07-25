@@ -1,4 +1,4 @@
-# analysis/
+# analysis
 
 These scripts reproduce the analysis methodology described in the project report, using synthetic example data.
 
