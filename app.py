@@ -1,4 +1,7 @@
 import streamlit as st
+import re
+import sqlite3
+from contextlib import contextmanager
 
 st.set_page_config(
     page_title="Cambio de Curso - FIUBA",
@@ -15,9 +18,11 @@ from datetime import datetime, timedelta
 def _logo_b64(height_px=None):
     logo_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-      "attached_assets",
+        "attached_assets",
         "logo_fiuba_1783172752615.png",
     )
+    
+        
     try:
         with open(logo_path, "rb") as f:
             b64 = base64.b64encode(f.read()).decode()
@@ -41,25 +46,59 @@ _TODOS = "(todos los cursos)"
 _PLACEHOLDER_MATERIA = "— Seleccioná una materia —"
 _PLACEHOLDER_CURSO = "— Seleccioná un curso —"
 
-ARCHIVO = "pedidos.csv"
-COLUMNAS = [
-    "padron", "iniciales", "nombre", "mail", "telefono",
-    "materia", "curso_actual", "curso_deseado", "genero",
-    "fecha", "vencimiento", "activo",
-]
+DB_FILE = "pedidos.db"
 DIAS_VENCIMIENTO = 15
 
-if not os.path.exists(ARCHIVO):
-    pd.DataFrame(columns=COLUMNAS).to_csv(ARCHIVO, index=False)
+
+@contextmanager
+def _db_conn():
+    """Open a SQLite connection, commit/rollback on exit, and always close."""
+    con = sqlite3.connect(DB_FILE)
+    try:
+        yield con
+        con.commit()
+    except Exception:
+        con.rollback()
+        raise
+    finally:
+        con.close()
+
+
+def _init_db():
+    with _db_conn() as con:
+        con.execute("""
+            CREATE TABLE IF NOT EXISTS pedidos (
+                padron        TEXT,
+                iniciales     TEXT,
+                nombre        TEXT,
+                mail          TEXT,
+                telefono      TEXT,
+                materia       TEXT,
+                curso_actual  TEXT,
+                curso_deseado TEXT,
+                genero        TEXT,
+                fecha         TEXT,
+                vencimiento   TEXT,
+                activo        INTEGER
+            )
+        """)
+
+_init_db()
 
 
 def cargar_datos():
-    df = pd.read_csv(ARCHIVO)
+    """Return all pedidos as a DataFrame, expiring overdue rows first."""
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+    with _db_conn() as con:
+        # Expire overdue rows atomically before reading
+        con.execute(
+            "UPDATE pedidos SET activo = 0 WHERE activo = 1 AND vencimiento < ?",
+            (now_str,),
+        )
+        df = pd.read_sql_query("SELECT * FROM pedidos", con)
+    df["activo"] = df["activo"].astype(bool)
     if len(df) > 0:
         df["vencimiento"] = pd.to_datetime(df["vencimiento"], format="mixed")
-        vencidos = df["vencimiento"] < pd.Timestamp.now()
-        df.loc[vencidos, "activo"] = False
-        df.to_csv(ARCHIVO, index=False)
     return df
 
 
@@ -374,28 +413,43 @@ with st.form("form_pedido"):
             st.error("Por favor completá todos los campos obligatorios (incluida materia y curso).")
         elif not padron.strip().isdigit():
             st.error("El Padrón debe contener solo números.")
+        elif len(nombre.strip()) > 80:
+            st.error("El nombre no puede superar los 80 caracteres.")
+        elif not re.match(r'^[A-Za-záéíóúÁÉÍÓÚüÜñÑ\s]+$', nombre.strip()):
+            st.error("El nombre solo puede contener letras.")
+        elif len(iniciales.strip()) > 6:
+            st.error("Las iniciales no pueden superar los 6 caracteres.")
+        elif not re.match(r'^[^@\s]+@[^@\s]+\.[^@\s]+$', mail.strip()):
+            st.error("Por favor ingresá un mail válido (ejemplo: nombre@dominio.com).")
+        elif telefono.strip() and not re.match(r'^\+?[\d\s\-]+$', telefono.strip()):
+            st.error("El teléfono solo puede contener números, espacios y guiones.")
         elif not acepto:
             st.error("Debés aceptar que tus datos sean visibles para continuar.")
         else:
-            df = cargar_datos()
+            nombre_limpio = re.sub(r'<[^>]*>', '', nombre).replace('<', '').replace('>', '')
             fecha = datetime.now()
             vencimiento = fecha + timedelta(days=DIAS_VENCIMIENTO)
-            nueva_fila = pd.DataFrame([{
-                "padron": padron.strip(),
-                "iniciales": iniciales.strip().upper(),
-                "nombre": nombre,
-                "mail": mail,
-                "telefono": telefono,
-                "materia": materia,
-                "curso_actual": curso_actual,
-                "curso_deseado": curso_deseado,
-                "genero": genero,
-                "fecha": fecha.strftime("%Y-%m-%d %H:%M"),
-                "vencimiento": vencimiento.strftime("%Y-%m-%d %H:%M"),
-                "activo": True,
-            }])
-            df = pd.concat([df, nueva_fila], ignore_index=True)
-            df.to_csv(ARCHIVO, index=False)
+            with _db_conn() as con:
+                con.execute(
+                    """INSERT INTO pedidos
+                       (padron, iniciales, nombre, mail, telefono, materia,
+                        curso_actual, curso_deseado, genero, fecha, vencimiento, activo)
+                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
+                    (
+                        padron.strip(),
+                        iniciales.strip().upper(),
+                        nombre_limpio,
+                        mail.strip(),
+                        telefono.strip(),
+                        materia,
+                        curso_actual,
+                        curso_deseado,
+                        genero,
+                        fecha.strftime("%Y-%m-%d %H:%M"),
+                        vencimiento.strftime("%Y-%m-%d %H:%M"),
+                        1,
+                    ),
+                )
             st.success(
                 "¡Pedido enviado! Para darte de baja cuando quieras, usá tu Padrón e Iniciales."
             )
@@ -432,20 +486,18 @@ with st.form("form_baja"):
         if not baja_padron.strip() or not baja_iniciales.strip():
             st.error("Ingresá tu Padrón e Iniciales.")
         else:
-            df = cargar_datos()
-            mask = (
-                (df["padron"].astype(str) == baja_padron.strip())
-                & (df["iniciales"].str.upper() == baja_iniciales.strip().upper())
-                & (df["activo"] == True)
-            )
-            if mask.sum() == 0:
+            with _db_conn() as con:
+                cur = con.execute(
+                    """UPDATE pedidos SET activo = 0
+                       WHERE padron = ? AND UPPER(iniciales) = ? AND activo = 1""",
+                    (baja_padron.strip(), baja_iniciales.strip().upper()),
+                )
+            if cur.rowcount == 0:
                 st.error(
                     "No se encontró un pedido activo con ese Padrón e Iniciales. "
                     "Revisá que no haya espacios de más o errores de tipeo."
                 )
             else:
-                df.loc[mask, "activo"] = False
-                df.to_csv(ARCHIVO, index=False)
                 st.success("Tu pedido fue dado de baja correctamente.")
 
 st.markdown(f"""
@@ -459,3 +511,4 @@ st.markdown(f"""
     </div>
 </div>
 """, unsafe_allow_html=True)
+   
