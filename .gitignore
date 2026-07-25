@@ -1,0 +1,4 @@
+pedidos.db
+pedidos.csv
+__pycache__/
+*.pyc
