@@ -28,24 +28,26 @@ pip install streamlit pandas
 streamlit run app.py
 ```
 
-Los pedidos se guardan en `pedidos.csv` (creado automáticamente en el primer uso; excluido del repositorio).
+Los pedidos se guardan en una base de datos SQLite (pedidos.db), creada automáticamente en el primer uso y excluida del repositorio. El uso de SQLite (en lugar de CSV) permite manejar correctamente el acceso concurrente de múltiples usuarios.
 
 ## Estructura
 
-## Estructura
-
-```
 app.py                       # Aplicación principal
 materias_cursos.json         # Materias y cursos disponibles (editable sin tocar el código)
 requirements.txt             # Dependencias
 LICENSE                      # Licencia MIT
+pedidos.db                   # Base de datos SQLite (creada automáticamente, excluida del repo)
 .streamlit/
   config.toml                 # Tema y configuración de Streamlit
 attached_assets/
   logo_fiuba_*.png            # Logo FIUBA (embebido en header y footer)
 docs/
   Informe - Cambios de Curso (1).pdf   # Informe de diagnóstico y justificación del proyecto
-```
+analysis/
+  whatsapp_analysis.py         # Reproduce el análisis de WhatsApp con datos sintéticos
+  siu_analysis.py               # Reproduce el análisis de SIU con datos sintéticos
+  README.md                     # Explica la metodología y por qué los datos son sintéticos
+
 
 ## Contacto
 
